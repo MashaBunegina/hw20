@@ -6,16 +6,17 @@ public class Daily extends Task implements Repeatable {
     public Daily(String descriptionTask, String header, boolean dateOfCreation, LocalDateTime tipeTask) {
         super(descriptionTask, header, tipeTask, dateOfCreation);
     }
-    LocalTime timeOfRepeat = LocalTime.of(getDateOfCreation().getHour(),getDateOfCreation().getMinute());
+
+    LocalTime timeOfRepeat = LocalTime.of(getDateOfCreation().getHour(), getDateOfCreation().getMinute());
 
     public LocalDateTime getTime() {
         if (getDateOfCreation().isAfter(LocalDateTime.now())) {
             return getDateOfCreation();
         }
-        if(timeOfRepeat.isAfter(LocalTime.now())){
-            return LocalDateTime.of(LocalDate.now(),timeOfRepeat);
+        if (timeOfRepeat.isAfter(LocalTime.now())) {
+            return LocalDateTime.of(LocalDate.now(), timeOfRepeat);
         }
-        return LocalDateTime.of(LocalDate.now().plusDays(1),timeOfRepeat);
+        return LocalDateTime.of(LocalDate.now().plusDays(1), timeOfRepeat);
     }
 
 
